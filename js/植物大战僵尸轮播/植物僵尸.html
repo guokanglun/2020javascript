@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .swaper {
+            position: relative;
+            width: 600px;
+            height: 370px;
+            margin: 100px auto;
+            user-select: none;
+        }
+        
+        .swaper li {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .swaper li.on img {
+            display: block;
+        }
+        
+        .swaper li img {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        .left,
+        .right {
+            position: absolute;
+            width: 40px;
+            height: 30px;
+            background-color: black;
+            opacity: .5;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            font-size: 33px;
+        }
+        
+        .left:hover {
+            cursor: pointer;
+        }
+        
+        .right:hover {
+            cursor: pointer;
+        }
+        
+        .left {
+            left: 0;
+            top: 170px;
+        }
+        
+        .right {
+            right: 0;
+            top: 170px;
+        }
+        
+        .swaper .top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background-color: black;
+            opacity: .5;
+            color: white;
+            text-align: center;
+        }
+        
+        button {
+            position: absolute;
+            width: 70px;
+            height: 40px;
+        }
+        
+        .first {
+            bottom: -60px;
+            left: 150px;
+            background-color: red;
+        }
+        
+        .second {
+            bottom: -60px;
+            left: 260px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swaper">
+        <ul>
+            <li class='on'><img src="1.jpg" alt=""></li>
+            <li><img src="2.jpg" alt=""></li>
+            <li><img src="3.jpg" alt=""></li>
+            <li><img src="4.jpg" alt=""></li>
+            <li><img src="5.jpg" alt=""></li>
+        </ul>
+        <span class='left'><</span>
+        <span class='right'>></span>
+        <p class='top'>
+            <span>1</span> / 5
+        </p>
+
+        <button class='first'>正常模式</button>
+        <button class='second'>循环模式</button>
+
+    </div>
+
+    <script>
+        // 轮播图顶部数字
+        var oNum = document.querySelector('.top span');
+
+        // 左侧按钮
+        var oLeft = document.getElementsByClassName('left')[0];
+
+        // 右侧按钮
+        var oRight = document.getElementsByClassName('right')[0];
+
+        // 第几张图片
+        var aLi = document.getElementsByTagName('li');
+
+        // 正常模式button
+        var aNormal = document.getElementsByClassName('first')[0];
+
+        // 循环模式button
+        var aCircle = document.getElementsByClassName('second')[0];
+
+        // 标记是单边播放还是循环播放
+        var mark = true;
+
+        // 图片张数
+        var len = aLi.length;
+
+        oRight.onclick = function() {
+            var num = oNum.innerHTML - 0;
+            num++;
+
+            if (mark) {
+                if (num > len) num = len;
+            } else {
+                if (num > len) num = num - len;
+
+            }
+            oNum.innerHTML = num;
+            var li = num - 1;
+            for (var i = 0; i < len; i++) {
+                aLi[i].removeAttribute('class', 'on');
+            }
+            aLi[li].setAttribute('class', 'on');
+        }
+
+        oLeft.onclick = function() {
+            var num = oNum.innerHTML - 0;
+            num--;
+
+            if (mark) {
+                if (num < 1) num = 1;
+            } else {
+                if (num < 1) num = num + len;
+
+            }
+            oNum.innerHTML = num;
+            var li = num - 1;
+            for (var i = 0; i < len; i++) {
+                aLi[i].removeAttribute('class', 'on');
+            }
+            aLi[li].setAttribute('class', 'on');
+        }
+
+        aNormal.onclick = function() {
+            aNormal.style.backgroundColor = 'red'
+            aCircle.style.backgroundColor = 'white';
+            mark = true
+        }
+
+        aCircle.onclick = function() {
+            aNormal.style.backgroundColor = 'white'
+            aCircle.style.backgroundColor = 'red';
+            mark = false;
+        }
+    </script>
+</body>
+
+</html>

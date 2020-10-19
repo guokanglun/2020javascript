@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .shopping {
+            width: 1000px;
+            margin: 50px auto;
+        }
+        
+        table,
+        tr,
+        th,
+        td {
+            border-collapse: collapse;
+            border: 1px solid red;
+            /* 用户无法选择 */
+            user-select: none;
+        }
+        
+        th {
+            width: 249px;
+            height: 51px;
+            background-color: #cc3366;
+            color: white;
+        }
+        
+        td {
+            width: 259px;
+            height: 101px;
+        }
+        
+        .sum {
+            width: 1000px;
+            height: 50px;
+            background-color: #cc3366;
+            margin-top: 10px;
+        }
+        
+        img {
+            display: block;
+            width: 70px;
+            height: 70px;
+            margin: auto;
+        }
+        
+        tr td:nth-child(2) {
+            text-align: center;
+            line-height: 101px;
+        }
+        
+        tr td:nth-child(3) {
+            font-size: 0;
+            text-align: center;
+        }
+        
+        .down,
+        .add {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            vertical-align: middle;
+            background-color: #DDD;
+        }
+        
+        .down:hover {
+            cursor: pointer;
+        }
+        
+        .add:hover {
+            cursor: pointer;
+        }
+        
+        .num {
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 28px;
+            color: red;
+            vertical-align: middle;
+            border: 1px solid grey;
+        }
+        
+        tr td:nth-child(4) {
+            line-height: 101px;
+            text-align: center;
+        }
+        
+        .sum p {
+            display: inline-block;
+            line-height: 50px;
+            color: white;
+            width: 250px;
+        }
+        
+        .sum .totalNum {
+            margin-left: 480px;
+        }
+        
+        .sum p span {
+            color: #f4e5a9
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shopping">
+        <table>
+            <tr>
+                <th>商品</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>小计</th>
+            </tr>
+            <tr>
+                <td>
+                    <img src="shop1.jpg" alt="">
+                </td>
+                <td class='danjia'>
+                    8
+                </td>
+                <td>
+                    <span class='down'>-</span>
+                    <span class='num'>0</span>
+                    <span class='add'>+</span>
+                </td>
+                <td class='price'>0</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="shop2.jpg" alt="">
+                </td>
+                <td class='danjia'>10</td>
+                <td>
+                    <span class='down'>-</span>
+                    <span class='num'>0</span>
+                    <span class='add'>+</span>
+                </td>
+                <td class='price'>0</td>
+            </tr>
+            <tr>
+                <td><img src="shop3.jpg" alt=""></td>
+                <td class='danjia'>12.5</td>
+                <td>
+                    <span class='down'>-</span>
+                    <span class='num'>0</span>
+                    <span class='add'>+</span>
+                </td>
+                <td class='price'>0</td>
+            </tr>
+            <tr>
+                <td><img src="shop4.jpg" alt=""></td>
+                <td class='danjia'>23</td>
+                <td>
+                    <span class='down'>-</span>
+                    <span class='num'>0</span>
+                    <span class='add'>+</span>
+                </td>
+                <td class='price'>0</td>
+            </tr>
+        </table>
+        <div class="sum">
+            <p class='totalNum'>已选商品 <span>0</span> 个</p>
+            <p class='totalPrice'>合计费用 ￥ <span>0</span></p>
+        </div>
+    </div>
+
+    <script>
+        // 数量加1
+        let aAdd = document.querySelectorAll('td .add');
+        // 单个商品个数
+        let aNum = document.querySelectorAll('td .num');
+        // 数量减1
+        let aDown = document.querySelectorAll('td .down');
+        // 单价
+        let aDanjia = document.querySelectorAll('td.danjia');
+        // 单个商品总价
+        let aPrice = document.querySelectorAll('td.price');
+        // 总数总价
+        let oNUm = document.querySelector('.sum .totalNum span');
+        let oPrice = document.querySelector('.sum .totalPrice span');
+
+        // 商品个数
+        let len = aAdd.length;
+
+        // 批量绑定事件
+        for (let i = 0; i < len; i++) {
+            // 点击增加
+            aAdd[i].onclick = function() {
+                    var num = aNum[i].innerHTML - 0;
+                    num++;
+                    aNum[i].innerHTML = num;
+
+                    // 单价
+                    var price = (aDanjia[i].innerHTML - 0) * num;
+                    // 给小计添加价格
+                    aPrice[i].innerHTML = price;
+
+                    // 每一次数量发生变化重新计算数量和总价
+                    allPrice = 0;
+                    allNum = 0;
+                    for (var j = 0; j < len; j++) {
+                        allNum += (aNum[j].innerHTML - 0);
+                        allPrice += (aPrice[j].innerHTML - 0);
+
+                        oNUm.innerHTML = allNum;
+                        oPrice.innerHTML = allPrice;
+                    }
+
+                }
+                // 点击减少
+            aDown[i].onclick = function() {
+                // 
+                var num = aNum[i].innerHTML - 0;
+                num--;
+                if (num < 0) num = 0;
+                aNum[i].innerHTML = num;
+
+                // 单价
+                var price = (aDanjia[i].innerHTML - 0) * num;
+                // 给小计添加价格
+                aPrice[i].innerHTML = price;
+
+                allPrice = 0;
+                allNum = 0;
+                for (var j = 0; j < len; j++) {
+                    allNum += (aNum[j].innerHTML - 0);
+                    allPrice += (aPrice[j].innerHTML - 0);
+
+                    oNUm.innerHTML = allNum;
+                    oPrice.innerHTML = allPrice;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

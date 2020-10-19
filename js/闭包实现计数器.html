@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .wrap {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+        
+        button {
+            width: 50px;
+            height: 20px;
+        }
+        
+        .wrap div {
+            width: 100px;
+            height: 50px;
+            background-color: pink;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button>加1</button>
+        <button>减1</button>
+        <div>0</div>
+    </div>
+
+    <script>
+        // 获取元素节点
+        var btn = document.getElementsByTagName('button');
+        var aDiv = document.getElementsByTagName('div')[1];
+
+        // 加1 闭包逻辑
+        function add(num) {
+            return function() {
+                num++;
+                return num;
+            }
+        }
+
+        // 减1 闭包逻辑
+        function reduce(num) {
+            return function() {
+                num--;
+                return num;
+            }
+        }
+
+
+        btn[0].onclick = function() {
+            // 数字每次都会变化，所以每次点击都需要重新获取一次
+            var num = aDiv.innerText;
+            aDiv.innerText = add(num)();
+        }
+
+        btn[1].onclick = function() {
+            var num = aDiv.innerText;
+            aDiv.innerText = reduce(num)();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #wrap {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+        
+        #wrap>p {
+            width: 100%;
+            height: 20px;
+        }
+        
+        button {
+            float: right;
+        }
+        
+        .reward {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 400px;
+            border-top: 1px dashed red;
+            overflow: hidden;
+        }
+        
+        .reward .content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <button id='btn'>抽奖一次</button>
+        <p>抽奖：2元抽一次</p>
+        <p>一等奖：10元</p>
+        <p>二等奖：5元</p>
+        <p>三等奖：2元</p>
+        <div class="reward">
+            <div class="content">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var aContent = document.getElementsByClassName('content')[0];
+
+        var aP = aContent.getElementsByTagName('p');
+
+        var arr = ['谢谢参与', '一等奖', '二等奖', '三等奖']
+        btn.onclick = function() {
+            var p = document.createElement('p');
+            var content = arr[parseInt(Math.random() * arr.length)]
+            aContent.appendChild(p);
+            p.innerHTML = '抽奖成功，你获得了：' + content;
+            // p.style.bottom = (aP.length - 1) * 20 + 5 + 'px'
+            console.log(aP.length)
+        }
+    </script>
+</body>
+
+</html>

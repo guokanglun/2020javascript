@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .wrap {
+            width: 500px;
+            height: 200px;
+        }
+        
+        button {
+            display: block;
+        }
+        
+        .wrap div {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button>生成10个div</button>
+        <!-- <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div> -->
+    </div>
+    <script>
+        var btn = document.getElementsByTagName('button')[0];
+        var oDiv = document.getElementsByClassName('wrap')[0];
+
+        var frag = document.createDocumentFragment();
+        btn.onclick = function() {
+            for (var i = 0; i < 10; i++) {
+                /*
+                10次重构，性能浪费
+                 // var div = document.createElement('div');
+                // oDiv.appendChild(div);
+                */
+                var div = document.createElement('div');
+                frag.appendChild(div);
+            }
+            oDiv.appendChild(frag);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pic {
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            width: 50px;
+            height: 62px;
+            background-color: rebeccapurple;
+        }
+        
+        .top {
+            background: url(img/up.png) no-repeat;
+        }
+        
+        .left {
+            background: url(img/left.png) no-repeat;
+        }
+        
+        .down {
+            background: url(img/down.png) no-repeat;
+        }
+        
+        .right {
+            background: url(img/right.png) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pic top">
+
+    </div>
+
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+
+        // div 的宽度  10 代表每次移动像素值
+        var divWidth = oDiv.clientWidth + 10;
+        var divHeight = oDiv.clientHeight + 10;
+
+        document.onkeydown = function(ev) {
+            // 获取键码值（左上右下对应 37， 38， 39， 40）
+            var code = ev.keyCode;
+            if (code == 37) {
+                // 通过类名修改背景图片
+                oDiv.className = 'pic left'
+                    // 图片距离浏览器左侧距离
+                var left = oDiv.offsetLeft;
+                // 如果小于10，将其赋值为10 ，避免图片超出浏览器范围
+                if (left <= 10) left = 10;
+
+                oDiv.style.left = left - 10 + 'px';
+            }
+            if (code == 38) {
+                oDiv.className = 'pic top'
+                var top = oDiv.offsetTop;
+                if (top <= 10) top = 10;
+                oDiv.style.top = top - 10 + 'px';
+            }
+            if (code == 39) {
+                oDiv.className = 'pic right'
+                var left = oDiv.offsetLeft;
+
+                // 如果图片距离浏览器左侧距离超过浏览器自身距离，直接跳出当前判断语句
+                // 浏览器宽度-盒子自身宽度
+                if (left >= innerWidth - divWidth) return;
+
+                oDiv.style.left = left + 10 + 'px';
+            }
+            if (code == 40) {
+                oDiv.className = 'pic down'
+                var top = oDiv.offsetTop;
+                if (top >= innerHeight - divHeight) return;
+                oDiv.style.top = top + 10 + 'px';
+            }
+        }
+    </script>
+</body>
+
+</html>

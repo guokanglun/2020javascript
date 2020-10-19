@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .wrap {
+            width: 960px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 10px auto;
+        }
+        
+        ul li {
+            position: relative;
+            bottom: 0;
+            right: 0;
+            width: 210px;
+            height: 240px;
+            display: inline-block;
+            margin: 10px 10px;
+        }
+        
+        li p {
+            /* text-align: center; */
+            font-size: 14px;
+        }
+        
+        img {
+            width: 100%;
+        }
+        
+        span {
+            position: absolute;
+            right: 0;
+            bottom: 20px;
+            width: 50px;
+            height: 50px;
+            background: url('price.png') no-repeat;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+        
+        .btn {
+            width: 100%;
+            height: 42px;
+            text-align: right;
+            line-height: 42px;
+        }
+        
+        button {
+            width: 88px;
+            height: 42px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <!-- <li>
+                <img src="xh_img1.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>97</span>
+            </li>
+            <li>
+                <img src="xh_img2.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>99.5</span>
+            </li>
+            <li>
+                <img src="xh_img3.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>100</span>
+            </li>
+            <li>
+                <img src="xh_img4.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>130</span>
+            </li>
+            <li>
+                <img src="xh_img5.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>215</span>
+            </li>
+            <li>
+                <img src="xh_img6.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>300</span>
+            </li>
+            <li>
+                <img src="xh_img7.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>500</span>
+            </li>
+            <li>
+                <img src="xh_img8.jpg" alt="">
+                <p>甜美七分袖荷叶边条纹设</p>
+                <span>700</span>
+            </li> -->
+
+        </ul>
+
+        <div class="btn">
+            <button>随机排序</button>
+            <button>从低到高</button>
+            <button>从高到低</button>
+        </div>
+    </div>
+
+    <script>
+        var oUl = document.getElementsByTagName('ul')[0];
+        var aBtn = document.getElementsByTagName('button');
+        var data = [{
+            src: "xh_img1.jpg",
+            dec: "深红色经典玫瑰",
+            price: 100
+        }, {
+            src: "xh_img2.jpg",
+            dec: "甜美七分袖荷叶边条纹设",
+            price: 97
+        }, {
+            src: "xh_img3.jpg",
+            dec: "甜美七分袖荷叶边条纹设",
+            price: 99.5
+        }, {
+            src: "xh_img4.jpg",
+            dec: "甜美七分袖荷叶边条纹设",
+            price: 215
+        }, {
+            src: "xh_img5.jpg",
+            dec: "经典红色我的最爱",
+            price: 130
+        }, {
+            src: "xh_img6.jpg",
+            dec: "清淡优雅百年百合",
+            price: 300
+        }, {
+            src: "xh_img7.jpg",
+            dec: "紫色冷艳系列",
+            price: 700
+        }, {
+            src: "xh_img8.jpg",
+            dec: "粉色浪漫系列玫瑰",
+            price: 500
+        }]
+
+        function createDom() {
+            var html = '';
+            for (var i = 0; i < data.length; i++) {
+                html += `
+            <li>
+                <img src= "${data[i].src}"" alt="">
+                <p>${data[i].dec}</p>
+                <span>${data[i].price}</span>
+            </li>
+            `
+            }
+            oUl.innerHTML = html
+        }
+        createDom()
+
+
+        // aBtn[0].onclick = function() {
+        //     data.sort(function() {
+        //         return Math.random() - 0.5
+        //     })
+        //     createDom()
+        // }
+
+        // aBtn[1].onclick = function() {
+        //     data.sort(function(a, b) {
+        //         return a.price - b.price
+        //     })
+        //     createDom()
+        // }
+
+        // aBtn[2].onclick = function() {
+        //     data.sort(function(a, b) {
+        //         return b.price - a.price
+        //     })
+        //     createDom()
+        // }
+
+        var fn = [
+            function() {
+                return Math.random() - 0.5
+            },
+            function(a, b) {
+                return a.price - b.price
+            },
+            function(a, b) {
+                return b.price - a.price
+            }
+
+        ]
+        for (let i = 0; i < aBtn.length; i++) {
+            aBtn[i].onclick = function() {
+                data.sort(fn[i])
+                createDom()
+            }
+        }
+    </script>
+</body>
+
+</html>

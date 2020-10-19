@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        #box {
+            width: 500px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 100px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        li {
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<ul id='box'>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+        $('li').click(function() {
+            $(this).css('background', 'red').siblings().css('background', 'chartreuse')
+        })
+    </script>
+</body>
+
+</html>

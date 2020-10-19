@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .outer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: 50px auto;
+        }
+        
+        .inner {
+            position: absolute;
+            top: -10px;
+            left: 250px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='outer'>
+        <div class="inner">
+
+        </div>
+    </div>
+
+    <script>
+        // var oInner = document.getElementsByClassName('inner')[0];
+        // var w, h;
+        // var rad = Math.PI / 2;
+        // var r = 250;
+
+        // function run() {
+        //     // pi弧度 = 180度  ==> 
+        //     rad -= Math.PI / 180;
+        //     w = r + r * Math.cos(rad);
+        //     h = r - r * Math.sin(rad);
+        //     oInner.style.left = w - 10 + 'px';
+        //     oInner.style.top = h - 10 + 'px';
+        // }
+
+        // setInterval(run, 1000 / 60);
+
+
+
+        var oInner = document.getElementsByClassName('inner')[0];
+        var w, h;
+        var rad = Math.PI / 2;
+        var r = 250;
+
+        function run() {
+            // pi弧度 = 180度  ==> 
+            rad -= Math.PI / 180;
+            w = r + r * Math.cos(rad);
+            h = r - r * Math.sin(rad);
+            oInner.style.left = w - 10 + 'px';
+            oInner.style.top = h - 10 + 'px';
+            requestAnimationFrame(run);
+        }
+        requestAnimationFrame(run);
+    </script>
+</body>
+
+</html>

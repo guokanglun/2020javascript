@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .wrap {
+            user-select: none;
+            position: relative;
+            width: 780px;
+            height: 330px;
+            background-color: pink;
+            margin: 50px auto;
+        }
+        
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        img.active {
+            display: block;
+        }
+        
+        span {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+        }
+        
+        span:hover {
+            cursor: pointer;
+        }
+        
+        .left {
+            left: 0;
+            top: 130px;
+        }
+        
+        .right {
+            right: 0;
+            top: 130px;
+        }
+        
+        .bottom {
+            position: absolute;
+            font-size: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+        }
+        
+        .bottom li {
+            display: inline-block;
+            font-size: 14px;
+            width: 156px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+        
+        .bottom li.on {
+            color: #e9c06c;
+            background-color: #303030;
+        }
+        
+        .bottom li:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <a href="#"><img class='active' src="1.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="2.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="3.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="4.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="5.jpg" alt=""></a>
+            </li>
+        </ul>
+        <span class='left'><</span>
+        <span class='right'>></span>
+        <ul class="bottom">
+            <li class='on'>开黑吗</li>
+            <li>我亚索贼6</li>
+            <li>只要我E的够快</li>
+            <li>队友的问号</li>
+            <li>就跟不上我</li>
+        </ul>
+    </div>
+
+    <script>
+        // 获取元素
+        var aImg = document.getElementsByTagName('img');
+        var aArrow = document.getElementsByTagName('span');
+        var aBtn = document.querySelectorAll('.bottom li');
+
+        // 定义信号量
+        var num = 0;
+
+        //长度
+        var len = aImg.length;
+
+        // // 点击右侧按钮
+        // aArrow[1].onclick = function() {
+        //     aImg[num].classList.remove('active');
+        //     aBtn[num].classList.remove('on');
+        //     num++;
+        //     if (num >= len) num = 0;
+
+        //     aImg[num].classList.add('active');
+        //     aBtn[num].classList.add('on');
+        // }
+
+        // // 点击左侧按钮
+        // aArrow[0].onclick = function() {
+        //     aImg[num].classList.remove('active');
+        //     aBtn[num].classList.remove('on');
+        //     num--;
+        //     if (num < 0) num = len - 1;
+
+        //     aImg[num].classList.add('active');
+        //     aBtn[num].classList.add('on');
+        // }
+
+        // // 点击下面按钮
+        // for (let i = 0; i < len; i++) {
+        //     aBtn[i].onclick = function() {
+        //         aImg[num].classList.remove('active');
+        //         aBtn[num].classList.remove('on');
+        //         num = i;
+        //         aImg[num].classList.add('active');
+        //         aBtn[num].classList.add('on');
+        //     }
+        // }
+
+
+        /*--------------------------优化------------------------------------------------*/
+        function change(flag) {
+            // 删除class属性值active
+            aImg[num].classList.remove('active');
+            aBtn[num].classList.remove('on');
+            if (flag) {
+                num++;
+                if (num >= len) num = 0;
+            } else {
+                num--;
+                if (num < 0) num = len - 1;
+            }
+            aImg[num].classList.add('active');
+            aBtn[num].classList.add('on');
+        }
+
+        // 点击右侧按钮
+        aArrow[1].onclick = function() {
+            change(true);
+        }
+
+        // 点击左侧按钮
+        aArrow[0].onclick = function() {
+            change(false);
+        }
+
+        // 点击下面按钮
+        for (let i = 0; i < len; i++) {
+            aBtn[i].onclick = function() {
+                aImg[num].classList.remove('active');
+                aBtn[num].classList.remove('on');
+                num = i;
+                aImg[num].classList.add('active');
+                aBtn[num].classList.add('on');
+            }
+        }
+    </script>
+</body>
+
+</html>

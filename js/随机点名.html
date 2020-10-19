@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .wrap {
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+        }
+        
+        .wrap div {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 400px;
+            font-size: 50px;
+        }
+        
+        button {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button>开始</button>
+        <button>结束</button>
+        <div>1</div>
+    </div>
+    <script>
+        var btn = document.getElementsByTagName('button');
+        var oDiv = document.querySelector('.wrap div');
+
+        var arr = [];
+        for (var i = 0; i < 101; i++) {
+            arr.push(i);
+        }
+
+        var timer;
+        btn[0].onclick = function() {
+            clearInterval(timer);
+            timer = setInterval(function() {
+                var randomNum = arr[parseInt(Math.random() * arr.length)]
+                oDiv.innerHTML = randomNum;
+                oDiv.style.color = 'black'
+            }, 50)
+        }
+        btn[1].onclick = function() {
+            clearInterval(timer);
+            oDiv.style.color = 'red'
+
+        }
+    </script>
+</body>
+
+</html>

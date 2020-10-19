@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .list {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            /* background-color: cadetblue; */
+        }
+        
+        .menu {
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        .menu:hover {
+            cursor: pointer;
+        }
+        
+        p {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background-color: coral;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 70px;
+            display: none;
+        }
+        
+        p:hover {
+            cursor: pointer;
+        }
+        
+        p:nth-child(1) {
+            left: 0;
+            top: 0;
+        }
+        
+        p:nth-child(2) {
+            right: 0;
+            top: 0;
+        }
+        
+        p:nth-child(3) {
+            bottom: 0;
+            left: 0;
+        }
+        
+        p:nth-child(4) {
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <div class="menu">菜单</div>
+        <p>首页</p>
+        <p>文章</p>
+        <p>登录</p>
+        <p>注册</p>
+    </div>
+
+    <script>
+        var oMenu = document.getElementsByClassName('menu')[0];
+        var aP = document.getElementsByTagName('p');
+
+        oMenu.onclick = function() {
+            oMenu.style.display = 'none'
+            for (var i = 0; i < aP.length; i++) {
+                aP[i].style.display = 'block'
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            background-color: pink;
+            overflow: hidden;
+        }
+        
+        h1 {
+            color: white;
+        }
+        
+        .ballon {
+            position: absolute;
+            /* top: 500px; */
+            left: 50px;
+            width: 85px;
+            height: 120px;
+            background: url(ballon.png) no-repeat;
+            /* background-position: -96px -120px; */
+        }
+        
+        .ballon:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class='score'>score: <span>0</span> 分</h1>
+    <h1 class='time'>time: <span>60</span> s</h1>
+    <!-- 点击气球爆炸声音 -->
+    <audio src="c.wav" id='bomb'></audio>
+
+    <!-- <p class='ballon'></p> -->
+    <script>
+        var score = document.getElementsByTagName('span')[0];
+        var atime = document.getElementsByTagName('span')[1];
+
+        // 定义信号量
+        var defen = 0,
+            time = 60;
+
+        // 
+        function Balloon() {
+            // 定义气球初始位置
+            this.top = 650;
+            this.left = Math.random() * 1200;
+
+            // 定时器
+            this.timer = null;
+
+            // 得分（依据背景图片）
+            this.score = parseInt(Math.random() * 8) + 1;
+
+            // 调用原型方法
+            this.init();
+            this.fly();
+            this.click();
+        }
+
+        // 原型对象
+        Balloon.prototype = {
+            // 初始化
+            init: function() {
+                // 创建标签设置位置属性
+                this.ballon = document.createElement('p');
+                this.ballon.className = 'ballon';
+                this.ballon.style.left = this.left + 'px';
+                this.ballon.style.top = this.top + 'px';
+                this.x = -(this.score - 1) % 4 * 96;
+                this.y = -parseInt((this.score - 1) / 4) * 120;
+                this.ballon.style.backgroundPosition = this.x + 'px ' + this.y + 'px';
+                document.body.appendChild(this.ballon);
+            },
+            // 气球移动
+            fly: function() {
+                this.timer = setInterval(function(This) {
+                    // 分数越高移动越快
+                    This.top -= 1 * This.score;
+                    // top值小于100 清除标签
+                    if (This.top < -100) {
+                        This.boom();
+                    }
+                    This.ballon.style.top = This.top + 'px'
+                }, 20, this)
+            },
+            // 气球爆炸
+            boom: function() {
+                clearInterval(this.timer);
+                document.body.removeChild(this.ballon)
+            },
+            // 点击气球
+            click: function() {
+                this.ballon.onclick = function() {
+                    this.boom();
+
+                    // 播放音乐
+                    bomb.load();
+                    bomb.play();
+                    // 设置得分
+                    defen += this.score;
+                    score.innerHTML = defen;
+                }.bind(this);
+            }
+
+        }
+
+        new Balloon();
+
+        // count 控制时间
+        var count = 0;
+
+        // 定时器每500ms生成一个气球
+        var timer = setInterval(function() {
+            count++;
+
+            if (count % 2 == 0) {
+                time--;
+                atime.innerHTML = time
+            }
+            if (time == 0) {
+                clearInterval(timer);
+                alert('得分: ' + defen + '分')
+            }
+            new Balloon();
+        }, 500)
+    </script>
+</body>
+
+</html>

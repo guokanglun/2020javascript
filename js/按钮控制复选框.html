@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <button>点击</button>
+
+    <script>
+        var inp = document.getElementsByTagName('input');
+        var btn = document.getElementsByTagName('button')[0];
+
+        btn.onclick = function() {
+            for (var i = 0; i < inp.length; i++) {
+				// checked属性为true表示已点击；false表示未点击
+                if (inp[i].checked == false) {
+                    inp[i].checked = true;
+                } else {
+                    inp[i].checked = false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

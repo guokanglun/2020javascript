@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            position: absolute;
+            top: 100px;
+            left: 50px;
+            width: 79px;
+            height: 108px;
+            background: url(girl.png) no-repeat 0px -216px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div></div> -->
+
+    <script>
+        function Girl() {
+            this.buzi = 0;
+            this.timer;
+            this.init();
+            this.xingzou();
+        }
+
+
+        // 共用方法放在原型链里，以对象的形式
+        Girl.prototype = {
+            // 初始化创建div
+            init: function() {
+                this.dom = document.createElement('div');
+                document.body.appendChild(this.dom);
+                this.dom.left = this.dom.clientWidth;
+                this.dom.style.top = Math.random() * 500 + 'px';
+            },
+            // 行走逻辑
+            xingzou: function() {
+                this.timer = setInterval(function(This) {
+                    This.buzi++;
+                    if (This.buzi > 7) This.buzi = 0;
+                    This.dom.style.backgroundPosition = -This.buzi * 79 + 'px -216px';
+                    This.dom.left += 6;
+                    if (This.dom.left > 500) {
+                        This.die();
+                    }
+                    This.dom.style.left = This.dom.left + 'px';
+                }, 100, this)
+            },
+            // 清除定时器
+            die: function() {
+                clearInterval(this.timer);
+                document.body.removeChild(this.dom)
+            }
+        }
+
+        new Girl();
+
+        setInterval(function() {
+            new Girl()
+        }, 2000)
+    </script>
+</body>
+
+</html>

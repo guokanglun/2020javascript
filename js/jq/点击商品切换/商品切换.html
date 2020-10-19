@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .box {
+            overflow: hidden;
+            width: 330px;
+            height: 250px;
+            margin: 100px auto;
+            /* background-color: pink; */
+            border: 1px solid pink;
+        }
+        
+        .left {
+            float: left;
+            width: 100px;
+            height: 100%;
+            background-color: pink;
+        }
+        
+        .left li {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        .left li:hover {
+            cursor: pointer;
+        }
+        
+        .right {
+            float: right;
+            width: 230ox;
+            height: 100%;
+        }
+        
+        .right li img {
+            width: 230px;
+            height: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="left">
+            <li>手机</li>
+            <li>手表</li>
+            <li>羽绒服</li>
+            <li>帽子</li>
+            <li>鞋子</li>
+        </ul>
+        <ul class="right">
+            <li>
+                <img src="img/20200109091845938.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/20200109091844776.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/20200109091850673.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/2020010909190248.png" alt="">
+            </li>
+            <li>
+                <img src="img/2020010909190779.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $('.left li').click(function() {
+            // 获取点击索引 this指向点击的对象
+            var $index = $(this).index();
+            $(this).css('background-color', 'red').siblings().css('background-color', 'pink')
+            $('.right li').eq($index).show().siblings().hide();
+        })
+    </script>
+</body>
+
+</html>

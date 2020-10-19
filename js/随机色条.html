@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        p {
+            width: 150px;
+            height: 30px;
+            /* background-color: blueviolet; */
+            float: left;
+            margin: 10px 5px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='box'>
+        <!-- <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p> -->
+    </div>
+    <script>
+        function randomColor() {
+            var red = parseInt(Math.random() * 255)
+            var green = parseInt(Math.random() * 255)
+            var blue = parseInt(Math.random() * 255)
+            var color = 'rgb(' + red + ',' + green + ', ' + blue + ')';
+            return color;
+        }
+
+        // var drag = document.createDocumentFragment();
+
+        setInterval(function() {
+            var aP = document.createElement('p');
+            aP.style.backgroundColor = randomColor();
+            aP.innerText = randomColor();
+            box.appendChild(aP);
+        }, 1000)
+    </script>
+</body>
+
+</html>

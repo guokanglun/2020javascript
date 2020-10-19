@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .box {
+            width: 1226px;
+            height: 460px;
+            margin: 100px auto;
+        }
+        
+        .img {
+            position: relative;
+        }
+        
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 234px;
+            height: 460px;
+            background-color: grey;
+        }
+        
+        .nav li {
+            width: 214px;
+            height: 42px;
+            line-height: 42px;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .nav li:hover {
+            background-color: indianred;
+        }
+        
+        .nav li:hover .detail {
+            display: block;
+        }
+        
+        .nav li:first-child {
+            margin-top: 20px;
+        }
+        
+        .nav li i {
+            position: absolute;
+            right: 0;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .img .detail {
+            position: absolute;
+            left: 234px;
+            top: 0;
+            width: 800px;
+            height: 460px;
+            background-color: white;
+            display: none;
+            line-height: 460px;
+            text-align: center;
+            font-size: 50px;
+        }
+        
+        span {
+            position: absolute;
+            width: 41px;
+            height: 69px;
+            line-height: 69px;
+            text-align: center;
+            font-size: 35px;
+            color: grey;
+            opacity: .3;
+        }
+        
+        .right {
+            right: 0;
+            top: 200px;
+        }
+        
+        .left {
+            left: 234px;
+            top: 200px;
+        }
+        
+        span:hover {
+            background-color: grey;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .circle {
+            position: absolute;
+            bottom: 30px;
+            right: 20px;
+            width: 400px;
+            height: 21px;
+            text-align: right;
+        }
+        
+        .circle li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid grey;
+            border-radius: 50%;
+        }
+        
+        .circle li:first-child {
+            background-color: white;
+        }
+        
+        .circle li:hover {
+            background-color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="img">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/499c6a806572dab61c794dd9ae4c7617.jpg?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
+
+            <span class='left'>
+                    <
+                </span>
+
+            <span class='right'>
+                    >
+                </span>
+
+            <ul class="circle">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <ul class='nav'>
+                <li>
+                    <a href="#">
+                        手机 电话卡
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        手机 电话卡
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        电视 盒子
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        电视 盒子
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        笔记本 显示器
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        笔记本 显示器
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        家电 插线板
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        家电 插线板
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        出行 穿戴
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        出行 穿戴
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        智能 路由器
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        智能 路由器
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        电源 配件
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        电源 配件
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                         健康 儿童
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        健康 儿童
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                     耳机 音响
+                        <i> > </i>
+                    </a>
+                    <div class="detail">
+                        耳机 音响
+                    </div>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

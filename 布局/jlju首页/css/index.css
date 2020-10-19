@@ -1,0 +1,569 @@
+@charset 'utf-8';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+#jlju {
+    width: 100%;
+    /* height: 100%; */
+    background-color: rgb(51, 51, 51);
+}
+
+#jlju .body {
+    width: 80%;
+    /* height: 2000px; */
+    margin: auto;
+    background-color: white;
+}
+
+#jlju .body .header {
+    position: relative;
+    width: 100%;
+    height: 394px;
+    /* background-color: brown; */
+    background: url(../img/111.jpg) no-repeat center/cover;
+}
+
+#jlju .body .header .top {
+    position: relative;
+    width: 100%;
+    height: 142px;
+    background-color: #333;
+    opacity: .5;
+}
+
+#jlju .body .header .top .top-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    /* background-color: brown; */
+    text-align: center;
+    font-size: 0;
+}
+
+#jlju .body .header .top .top-nav li {
+    position: relative;
+    width: 110px;
+    height: 30px;
+    font-size: 16px;
+    display: inline-block;
+    /* background-color: burlywood; */
+}
+
+#jlju .body .header .top .top-nav li:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -5px;
+    background-color: white;
+    width: 1px;
+    height: 30px;
+}
+
+#jlju .body .header .top .top-nav li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+    color: #dcdacf;
+}
+
+#jlju .body .header .top .top-nav li a:hover {
+    color: red;
+}
+
+#jlju .body .header img {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+#jlju .body .header .search {
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    width: 118px;
+    height: 26px;
+    padding-left: 15px;
+}
+
+#jlju .body .header .ipt-hide {
+    position: absolute;
+    right: 7px;
+    top: 64px;
+    width: 160px;
+    height: 50px;
+    background-color: white;
+    /* text-align: center; */
+    line-height: 50px;
+    padding-left: 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    display: none;
+}
+
+#jlju .body .header .btn {
+    position: absolute;
+    right: 25px;
+    top: 36px;
+    width: 26px;
+    height: 28px;
+}
+
+#jlju .body .header .font-nav {
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    height: 30px;
+    /* background-color: burlywood; */
+    font-size: 0;
+    text-align: center;
+}
+
+#jlju .body .header .font-nav li {
+    position: relative;
+    width: 104px;
+    height: 30px;
+    background-color: #CC374A;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#jlju .body .header .font-nav li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    color: #eaeaea;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    opacity: .5;
+}
+
+#jlju .body .header .font-nav li a:hover {
+    color: yellow;
+}
+
+#jlju .body .header .font-nav li:nth-child(1)~li:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 1px;
+    height: 20px;
+    background-color: white;
+}
+
+#jlju .body .main {
+    position: relative;
+    width: 100%;
+    height: 710px;
+    /* background-color: chartreuse; */
+}
+
+#jlju .body .main .event {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 214px;
+    height: 328px;
+    background-color: #CC374A;
+}
+
+#jlju .body .main .event li {
+    width: 214px;
+    height: 78px;
+    /* background-color: chocolate; */
+    margin-top: 1px;
+    overflow: hidden;
+}
+
+#jlju .body .main .event li a:hover {
+    color: yellow;
+}
+
+#jlju .body .main .event li:nth-child(1)~li:before {
+    content: '';
+    display: block;
+    width: 2214px;
+    height: 1px;
+    background-color: white;
+}
+
+#jlju .body .main .event li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    /* line-height: 78px; */
+}
+
+#jlju .body .main .channel {
+    position: absolute;
+    width: 220px;
+    height: 280px;
+    bottom: 0;
+    left: 20px;
+    /* background-color: chocolate; */
+}
+
+#jlju .body .main .channel .title {
+    position: relative;
+    width: 214PX;
+    height: 40px;
+    /* background-color: cornflowerblue; */
+}
+
+#jlju .body .main .channel .title:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: pink;
+}
+
+#jlju .body .main .channel .title p {
+    font-size: 13px;
+}
+
+#jlju .body .main .channel .title p,
+#jlju .body .main .channel .title h3 {
+    margin-left: 20px;
+}
+
+#jlju .body .main .channel ul {
+    width: 100%;
+    height: 215px;
+    /* background-color: crimson; */
+    margin-top: 10px;
+}
+
+#jlju .body .main .channel ul li {
+    width: 100%;
+    height: 37px;
+    margin-top: 7px;
+    background-color: #4d4d4d;
+}
+
+#jlju .body .main .channel ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 37px;
+    color: black;
+}
+
+#jlju .body .main .channel ul li a:hover {
+    color: white;
+    background-color: red;
+}
+
+#jlju .body .main .center {
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    width: 431px;
+    height: 650px;
+    /* background-color: cyan; */
+}
+
+#jlju .body .main .center .title {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background-color: cornflowerblue; */
+}
+
+#jlju .body .main .center .title:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: pink;
+}
+
+#jlju .body .main .center .title p {
+    font-size: 13px;
+}
+
+#jlju .body .main .center .title p,
+#jlju .body .main .center .title h3 {
+    margin-left: 20px;
+}
+
+#jlju .body .main .center .title a {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    color: #cc374a;
+}
+
+#jlju .body .main .center .banner {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    background-color: green;
+}
+
+#jlju .body .main .center .banner ul>li {
+    /* position: relative; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#jlju .body .main .center .banner li.active {
+    display: block;
+}
+
+#jlju .body .main .center .banner ul>li span {
+    /* display: block; */
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    opacity: .5;
+    width: 410px;
+    height: 40px;
+    /* text-align: center; */
+    padding-left: 20px;
+    line-height: 40px;
+    color: white;
+}
+
+#jlju .body .main .center .banner a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#jlju .body .main .center .banner img {
+    width: 100%;
+    height: 100%;
+}
+
+#jlju .body .main .center .banner ol {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    /* background-color: darkgoldenrod; */
+    text-align: right;
+    font-size: 0;
+}
+
+#jlju .body .main .center .banner ol li {
+    width: 25px;
+    height: 25px;
+    /* background-color: darkred; */
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+}
+
+#jlju .body .main .center .banner ol li:hover {
+    cursor: pointer;
+}
+
+#jlju .body .main .center .banner ol li.on {
+    background-color: grey;
+    color: black;
+}
+
+#jlju .body .main .center .bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 290px;
+    /* background-color: darksalmon; */
+}
+
+#jlju .body .main .center .bottom a {
+    font-size: 14px;
+    color: black;
+}
+
+#jlju .body .main .center .bottom p {
+    position: relative;
+    margin-top: 15px;
+}
+
+#jlju .body .main .center .bottom p span {
+    position: absolute;
+    right: 5px;
+}
+
+#jlju .body .main .right {
+    position: absolute;
+    right: 70px;
+    top: 50px;
+    width: 215px;
+    height: 698px;
+    /* background-color: cyan; */
+}
+
+#jlju .body .main .right .title {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background-color: cornflowerblue; */
+}
+
+#jlju .body .main .right .title:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: pink;
+}
+
+#jlju .body .main .right .title p {
+    font-size: 13px;
+}
+
+#jlju .body .main .right .title p,
+#jlju .body .main .right .title h3 {
+    margin-left: 20px;
+}
+
+#jlju .body .main .right .title a {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    color: #cc374a;
+}
+
+#jlju .body .main .right .news {
+    width: 100%;
+    height: 364px;
+    background-color: #EDEDED;
+    overflow: hidden;
+}
+
+#jlju .body .main .right .news li {
+    width: 205px;
+    height: 86px;
+    /* background-color: darkviolet; */
+    padding-left: 10px;
+    line-height: 30px;
+    color: red
+}
+
+#jlju .body .main .right .news li a {
+    color: red
+}
+
+#jlju .body .main .right .news li:nth-child(1) {
+    margin-top: 20px;
+}
+
+#jlju .body .main .right .news li span {
+    display: block;
+}
+
+#jlju .body .main .right .bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 260px;
+    /* background-color: deeppink; */
+}
+
+#jlju .body .main .right .title {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background-color: cornflowerblue; */
+}
+
+#jlju .body .main .right .title:before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: pink;
+}
+
+#jlju .body .main .right .title p {
+    font-size: 13px;
+}
+
+#jlju .body .main .right .title p,
+#jlju .body .main .right .title h3 {
+    margin-left: 20px;
+}
+
+#jlju .body .main .right .title a {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    color: #cc374a;
+}
+
+#jlju .body .main .right .bottom ul {
+    width: 100%;
+    height: 220px;
+    /* background-color: firebrick; */
+    font-size: 14px;
+}
+
+#jlju .body .main .right .bottom ul li {
+    margin-top: 25px;
+}
+
+#jlju .body .footer {
+    width: 100%;
+    height: 66px;
+    background-color: #3d3c3c;
+    margin-top: 50px;
+    /* line-height: 66px; */
+}
+
+#jlju .body .footer a:nth-child(1) {
+    margin-left: 150px;
+}
+
+#jlju .body .footer a,
+#jlju .body .footer span {
+    vertical-align: middle;
+    color: #938679;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+#jlju .body .footer img {
+    width: 68px;
+    height: 68px;
+    vertical-align: middle;
+}
