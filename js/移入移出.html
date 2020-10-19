@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 100px;
+            height: 30px;
+            background-color: aquamarine;
+            margin: auto;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+
+    <script>
+        var aDiv = document.getElementsByTagName('div');
+        aDiv[0].onmouseenter = function() {
+            aDiv[1].innerHTML = '移入了box1'
+        }
+        aDiv[1].onmouseenter = function() {
+            aDiv[0].innerHTML = '移入了box2'
+        }
+
+        aDiv[0].onmouseleave = function() {
+            aDiv[1].innerHTML = ''
+        }
+        aDiv[1].onmouseleave = function() {
+            aDiv[0].innerHTML = ''
+        }
+    </script>
+</body>
+
+</html>
