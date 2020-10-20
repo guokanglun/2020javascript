@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table {
+            margin: 100px auto;
+            user-select: none;
+        }
+        
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        th {
+            /* width: 105px; */
+            height: 33px;
+            text-align: center;
+        }
+        
+        td {
+            height: 103px;
+            text-align: center;
+        }
+        
+        img {
+            width: 105px;
+            height: 103px;
+        }
+        
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #666;
+            vertical-align: middle;
+            color: white;
+            line-height: 30px;
+        }
+        
+        span:hover {
+            cursor: pointer;
+        }
+        
+        p {
+            display: inline-block;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>图片</th>
+            <th style="width: 100px;">单价</th>
+            <th style="width: 200px;">数量</th>
+            <th style="width: 100px;">价格</th>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="shop1.jpg" alt="">
+            </td>
+            <td>20</td>
+            <td>
+                <span>-</span>
+                <p class='count'>0</p>
+                <span>+</span>
+            </td>
+            <td class='price'>0</td>
+        </tr>
+    </table>
+
+    <script>
+        let aSpan = document.getElementsByTagName('span');
+        let aPrice = document.getElementsByClassName('price')[0];
+        let aCount = document.getElementsByClassName('count')[0];
+
+        // 初始价格 数量
+        let price = 0;
+        let count = 0;
+
+        // change 逻辑
+        function change(flag) {
+            // 1表示增加  0表示减少
+            if (flag == 1) {
+                count++
+            } else {
+                count--
+                if (count < 0) count = 0;
+            }
+            aCount.innerHTML = count;
+            price = 20 * count;
+            aPrice.innerText = price
+        }
+
+
+        for (let i = 0; i < aSpan.length; i++) {
+            aSpan[i].onclick = function(ev) {
+                ev.preventDefault();
+                change(i);
+            }
+        }
+    </script>
+</body>
+
+</html>
