@@ -88,6 +88,7 @@
         let aSpan = document.getElementsByTagName('span');
         let aPrice = document.getElementsByClassName('price')[0];
         let aCount = document.getElementsByClassName('count')[0];
+        let img = document.getElementsByTagName('img')[0];
 
         // 初始价格 数量
         let price = 0;
@@ -107,6 +108,10 @@
             aPrice.innerText = price
         }
 
+        // 清除图片默认拖动事件（可有可无）
+        img.onmousedown = function(ev) {
+            ev.preventDefault();
+        }
 
         for (let i = 0; i < aSpan.length; i++) {
             aSpan[i].onclick = function(ev) {
