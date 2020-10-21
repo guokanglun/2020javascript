@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .box {
+            position: relative;
+            overflow: hidden;
+            width: 430px;
+            height: 205px;
+            margin: 100px auto;
+        }
+        
+        .left {
+            float: left;
+            width: 102px;
+            height: 96px;
+        }
+        
+        .left li.on {
+            background-color: coral;
+        }
+        
+        .left li:hover {
+            cursor: pointer;
+        }
+        
+        .left li {
+            width: 102px;
+            height: 30px;
+            background-color: black;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        
+        .right {
+            float: right;
+            width: 325px;
+            height: 100%;
+        }
+        
+        .right>li {
+            width: 325px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        img {
+            width: 325px;
+            height: 100%;
+        }
+        
+        .right>li p {
+            position: absolute;
+            bottom: 10px;
+            left: 120px;
+            width: 170px;
+            height: 30px;
+            color: white;
+        }
+        
+        .right ul li {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        .right>li {
+            display: none;
+        }
+        
+        .right>li:nth-child(1) {
+            display: block;
+        }
+        
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: black;
+        }
+        
+        span:hover {
+            cursor: pointer;
+        }
+        
+        span.on {
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="left">
+            <li class='on'>豪车</li>
+            <li>美味</li>
+            <li>美女风景</li>
+        </ul>
+
+        <ul class="right">
+            <li>
+                <ul class="car">
+                    <li class='on'>
+                        <img src="img/1.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/2.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/3.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/4.jpg" alt="">
+                    </li>
+                </ul>
+                <p> <span class='on'>1</span> <span>2</span> <span>3</span> <span>4</span></p>
+            </li>
+            <li>
+                <ul class="food">
+                    <li class='on'>
+                        <img src="img/m1.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/m2.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/m3.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/m4.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/m5.jpg" alt="">
+                    </li>
+                </ul>
+                <p> <span class='on'>1</span> <span>2</span> <span>3</span> <span>4</span><span>5</span></p>
+            </li>
+            <li>
+                <ul class="sce">
+                    <li class='on'>
+                        <img src="img/s1.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/s2.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/s3.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/s4.jpg" alt="">
+                    </li>
+                    <li>
+                        <img src="img/s5.jpg" alt="">
+                    </li>
+                </ul>
+                <p> <span class='on'>1</span> <span>2</span> <span>3</span> <span>4</span><span>5</span></p>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $('.left li').hover(function() {
+            // 当前元素在亲兄弟中的索引
+            let index = $(this).index();
+            // this指代当前元素，给当前li添加class=on，兄弟元素移除on,在css中给相应样式
+            $(this).addClass('on').siblings().removeClass('on');
+            // 通过索引给右侧li元素 相对应的显示和隐藏
+            $('.right>li').eq(index).show().siblings().hide()
+                // 给右侧角标添加滑动事件 es6字符串传入参数
+            $(`.right>li:eq(${index}) span`).hover(function() {
+                // this 指向span元素
+                let index2 = $(this).index();
+                $(this).css('background-color', 'coral').siblings().css('background-color', 'black')
+                $(`.right>li:eq(${index}) li`).eq(index2).show().siblings().hide()
+            })
+        })
+    </script>
+</body>
+
+</html>
