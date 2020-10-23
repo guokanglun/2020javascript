@@ -15,28 +15,33 @@
         ul {
             margin-left: 10px;
         }
+        
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
-    <input type="text" id=ipt>
+    <input type="text" id=ipt> <button>搜索</button>
     <ul id='Ul'>
-        <!-- <li>hello</li> -->
+        <!-- <li><a href="#">
+            helo
+        </a></li> -->
     </ul>
     <script>
-        /*
-        JSONP是一种被开发人员创造出来的一种非官方的跨域数据交互格式
+        // JSONP是一种被开发人员创造出来的一种非官方的跨域数据交互格式
 
-        https://www.baidu.com/sugrec?prod=pc&wd=dou&cb=dou
-        动态修改wd内容实时刷新搜索内容
-        cb代表函数名
+        // https://www.baidu.com/sugrec?prod=pc&wd=dou&cb=dou
+        // 动态修改wd内容实时刷新搜索内容
+        // cb代表函数名
 
-        dou({"q":"dou","p":false,"g":[{"type":"sug","sa":"s_1","q":"抖音"},{"type":"sug","sa":"s_2","q":"斗罗大陆"},{"type":"sug","sa":"s_3","q":"斗罗大陆4终极斗罗"},{"type":"sug","sa":"s_4","q":"double"},{"type":"sug","sa":"s_5","q":"斗破苍穹"},{"type":"sug","sa":"s_6","q":"窦性心律是什么意思?"},{"type":"sug","sa":"s_7","q":"斗地主"},{"type":"sug","sa":"s_8","q":"doublelift"},{"type":"sug","sa":"s_9","q":"doubt"},{"type":"sug","sa":"s_10","q":"窦骁"}],"slid":"1571631889023662007","queryid":"0x288ee04eee77b7"})
+        // dou({"q":"dou","p":false,"g":[{"type":"sug","sa":"s_1","q":"抖音"},{"type":"sug","sa":"s_2","q":"斗罗大陆"},{"type":"sug","sa":"s_3","q":"斗罗大陆4终极斗罗"},{"type":"sug","sa":"s_4","q":"double"},{"type":"sug","sa":"s_5","q":"斗破苍穹"},{"type":"sug","sa":"s_6","q":"窦性心律是什么意思?"},{"type":"sug","sa":"s_7","q":"斗地主"},{"type":"sug","sa":"s_8","q":"doublelift"},{"type":"sug","sa":"s_9","q":"doubt"},{"type":"sug","sa":"s_10","q":"窦骁"}],"slid":"1571631889023662007","queryid":"0x288ee04eee77b7"})
 
-        
-        */ 
+
         let Ul = document.getElementById('Ul');
-        // 表单内容刷新动态修改script标签
+        let btn = document.getElementsByTagName('button')[0]
+            // 表单内容刷新动态修改script标签
         ipt.oninput = function() {
             var script = document.createElement('script');
             script.src = `https://www.baidu.com/sugrec?prod=pc&wd=${this.value}&cb=dou`
@@ -50,7 +55,9 @@
                 data.g.forEach((item, index) => {
                     item = item.q
                     ul += `
-                    <li>${item}</li>
+                    <li><a href="https://www.baidu.com/s?ie=UTF-8&wd=${item}" target='_blank'>
+                            ${item}
+                        </a></li>
                     `
                 });
                 Ul.innerHTML = ul;
@@ -58,6 +65,10 @@
                 Ul.innerHTML = '没有相关搜索内容';
             }
 
+        }
+
+        btn.onclick = function() {
+            window.location.href = `https://www.baidu.com/s?ie=UTF-8&wd=${ipt.value}`
         }
     </script>
 </body>
