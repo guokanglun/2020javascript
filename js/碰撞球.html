@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        canvas {
+            display: block;
+            /* background-color: chocolate; */
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+
+    <script>
+        let canvas = document.getElementsByTagName('canvas')[0];
+        // 获取canvas对象
+        let ctx = canvas.getContext('2d');
+        // 定义浏览器宽高
+        let w, h;
+        // bubble 集合用来 存放所有 生成的小球
+        let aBubble = [];
+
+        // 浏览器宽高改变实时更新canvas宽高
+        ~ function() {
+            window.onresize = arguments.callee;
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+        }()
+
+        // 自定义随机方法
+        function random(min, max) {
+            return Math.random() * (max - min) + min
+        }
+
+        // 随机颜色
+        function color() {
+            let red = Math.random() * 255
+            let green = Math.random() * 255
+            let blue = Math.random() * 255;
+            return `rgb(${red},${green},${blue})`
+        }
+
+        // 构造函数Bubble
+        function Bubble() {}
+
+        // 构造函数原型
+        Bubble.prototype = {
+            // 初始化方法定义小球的位置xy，半径r，颜色c，移动方向vx vy
+            init() {
+                this.x = random(0, w);
+                this.y = random(0, h);
+                this.r = random(1, 3);
+                this.c = color();
+                this.vx = random(-1, 1);
+                this.vy = random(-1, 1)
+            },
+            // 绘制小球方法
+            draw() {
+                // 拿起画笔
+                ctx.beginPath();
+                // 位置xy  半径r  初始角度  结束角度（弧度制）
+                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                // 填充颜色
+                ctx.fillStyle = this.c;
+                // 绘制 
+                ctx.fill();
+            },
+
+            // 移动方法
+            move() {
+                this.x += this.vx;
+                this.y += this.vy;
+                // 边侧检测
+                // 左侧位置小于半径证明已经超出浏览器了，右侧位置 + 小球半径 大于浏览器宽度 超出
+                // 超出速度取反
+                if (this.x < this.r || this.x + this.r > w) {
+                    this.vx = -this.vx
+                }
+                if (this.y < this.r || this.y + this.r > h) {
+                    this.vy = -this.vy
+                }
+                // 移动后调用move方法
+                this.draw();
+            }
+        }
+
+        // 创建bubble方法
+        function createBUbble(num) {
+            for (let i = 0; i < num; i++) {
+                let bubble = new Bubble()
+                bubble.init()
+                bubble.draw()
+                    // 创建之后将所有bubble保存在一个数组中
+                    // 原因：canvas只能通过js操作，各个小球没有对应的标签，无法直接操作
+                aBubble.push(bubble)
+            }
+        }
+        createBUbble(1314);
+
+        // 定时器动画
+        setInterval(function() {
+            // 清除上一时刻bubble
+            // 清除上一时刻canvas上的所有内容
+            ctx.clearRect(0, 0, w, h)
+            for (let bubble of aBubble) {
+                bubble.move();
+            }
+        })
+    </script>
+</body>
+
+</html>

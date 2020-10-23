@@ -37,14 +37,13 @@
 
         // 边界
         var w, h;
-        // 边界变化
-        function browserChange() {
-            w = innerWidth - divWidth;
-            h = innerHeight - divHeight;
-            console.log(w, h)
-        }
-        browserChange();
-        window.onresize = browserChange;
+
+        // 浏览器宽高变化
+        ~ function() {
+            window.onresize = arguments.callee;
+            w = window.innerWidth;
+            h = window.innerHeight;
+        }()
 
         // 步长
         var vx = 5;
@@ -54,21 +53,12 @@
             var lx = box.offsetLeft + vx;
             var ly = box.offsetTop + vy;
 
-            if (lx > w) {
-                lx = w;
-                vx = -vx;
+            // 边界检测
+            if (lx < 0 || lx + divWidth > w) {
+                vx = -vx
             }
-            if (lx < 0) {
-                lx = 0;
-                vx = -vx;
-            }
-            if (ly > h) {
-                ly = h;
-                vy = -vy;
-            }
-            if (ly < 0) {
-                ly = 0;
-                vy = -vy;
+            if (ly < 0 || ly + divHeight > h) {
+                vy = -vy
             }
 
             box.style.left = lx + 'px';
