@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            user-select: none;
+            overflow: hidden;
+            background: url(img/1.jpg) no-repeat center/cover;
+        }
+        
+        #box {
+            width: 1010px;
+            height: 620px;
+            margin: 20px auto;
+            box-shadow: 0 0 15px rgba(0, 255, 255, .8);
+        }
+        
+        ul {
+            width: 100%;
+            height: 100%;
+            line-height: 620px;
+        }
+        
+        li {
+            display: inline-block;
+            width: 10px;
+            /* height: 100px; */
+            background-color: blueviolet;
+            margin-left: 10px;
+            vertical-align: bottom;
+            transition-duration: .5s;
+            /* background: linear-gradient(red 0%, green 100%); */
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="./music/Anastasia Kushnir - Yesterday.mp3" autoplay loop></audio>
+    <div id="box">
+        <ul>
+            <!-- <li></li>
+            <li></li> -->
+        </ul>
+    </div>
+</body>
+
+<script>
+    let oUl = document.getElementsByTagName('ul')[0];
+    let ul = ''
+
+    // 创建li
+    function createElements(num) {
+        for (let i = 0; i < num; i++) {
+            ul += `
+            <li></li>
+            `
+        }
+        console.log(ul)
+        oUl.innerHTML = ul
+    }
+
+    createElements(40);
+
+    // 随机颜色
+    function randomColor() {
+        let red = Math.random() * 255;
+        let green = Math.random() * 255;
+        let blue = Math.random() * 255;
+        return `rgb(${red}, ${green}, ${blue})`
+    }
+
+    // 设置li属性
+    function bar() {
+        let aLi = document.getElementsByTagName('li');
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].style.height = Math.random() * 400 + 100 + 'px';
+            aLi[i].style.background = `linear-gradient(${randomColor()} 0%, ${randomColor()} 100%)`;
+
+        }
+    }
+
+    bar();
+
+    setInterval(bar, 500)
+</script>
+
+</html>
