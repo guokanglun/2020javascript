@@ -1,5 +1,5 @@
-/*
-方法一：
+
+//方法一：
 // 注意：此处用箭头函数会报错
 // 箭头函数没有自己的this，会向父作用域查找
 $('.title li').click(function() {
@@ -8,7 +8,6 @@ $('.title li').click(function() {
     $('.content li').eq($index).show().siblings().hide()
 })
 
-*/
 
 /*
 方法二：
